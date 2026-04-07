@@ -286,8 +286,8 @@
       .replace(/### (.*)/g, '<strong style="display:block;margin-top:10px;font-size:1em;">$1</strong>')
       .replace(/#### (.*)/g, '<strong style="display:block;margin-top:8px;">$1</strong>')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n- /g, '<br>• ')
-      .replace(/\n/g, '<br>');
+      .replace(/\\n- /g, '<br>• ')
+      .replace(/\\n/g, '<br>');
   }
 
   function appendMsg(role, text) {
