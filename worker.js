@@ -281,6 +281,15 @@ const HTML = `<!DOCTYPE html>
 
   function clearPlaceholder() { var el = document.querySelector('.chat-placeholder'); if (el) el.remove(); }
 
+  function formatMarkdown(text) {
+    return text
+      .replace(/### (.*)/g, '<strong style="display:block;margin-top:10px;font-size:1em;">$1</strong>')
+      .replace(/#### (.*)/g, '<strong style="display:block;margin-top:8px;">$1</strong>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n- /g, '<br>• ')
+      .replace(/\n/g, '<br>');
+  }
+
   function appendMsg(role, text) {
     clearPlaceholder();
     var cw = document.getElementById('chat-window');
@@ -291,7 +300,11 @@ const HTML = `<!DOCTYPE html>
     label.textContent = role === 'user' ? 'You' : "L'Oreal Advisor";
     var bubble = document.createElement('div');
     bubble.className = 'bubble ' + role;
-    bubble.textContent = text;
+    if (role === 'bot') {
+      bubble.innerHTML = formatMarkdown(text);
+    } else {
+      bubble.textContent = text;
+    }
     group.appendChild(label);
     group.appendChild(bubble);
     cw.appendChild(group);
