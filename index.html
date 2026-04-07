@@ -326,8 +326,8 @@
     document.getElementById('chat-send').disabled = true;
 
     var selected = selectedIds.map(function(id) { return PRODUCTS.find(function(p) { return p.id === id; }); }).filter(Boolean);
-    var productList = selected.map(function(p) { return '- ' + p.name + ': ' + p.description; }).join('\n');
-    var userMsg = "Generate a personalized beauty routine using these L'Oreal products:\n" + productList;
+    var productList = selected.map(function(p) { return '- ' + p.name + ': ' + p.description; }).join('\\n');
+    var userMsg = "Generate a personalized beauty routine using these L'Oreal products:\\n" + productList;
 
     conversationHistory = [{ role: 'user', content: userMsg }];
     appendMsg('user', 'Generate my routine with ' + selected.length + ' selected product' + (selected.length > 1 ? 's' : '') + ': ' + selected.map(function(p){ return p.name; }).join(', '));
