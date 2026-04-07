@@ -1,0 +1,4 @@
+name = "loreal-routine-builder"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+account_id = "53d9a35f1b8fae77faf164c60fdaf9f5"
